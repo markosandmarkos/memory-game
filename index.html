@@ -12,20 +12,47 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
     
+    <link rel="stylesheet" href="assets/css/style.css">
+    
     <title></title>
 </head>
 
 <body>
 
 <div id="root">
-
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+                Memory Game
+            </div>
+            
+            <div class="card-body">
+                {{#each rows as |columns|}}
+                    <div class="row">
+                        {{#each columns as |game index|}}
+                            <div class="col-sm p-2">
+                                <div class="card game-item pointer">
+                                    <img class="game-img" src="assets/img/game/{{game}}.png" alt="1">
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/each}}
+            </div>
+            
+            <div class="card-footer text-muted">
+                Developed for <b class="text-warning">Hasmik</b>, Grish, Stepan and Narek
+            </div>
+            
+        </div>
+    </div>
 </div>
 
 <!-- Handlebars JS for templating -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>-->
 
-<!-- Optional JavaScript -->
+<!-- Optional JavaScript for Bootstrap -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -41,7 +68,10 @@
 
 
 <!-- Custom scripts -->
+<script src="assets/js/Constants.js"></script>
 <script src="assets/js/App.js"></script>
+<script src="assets/js/helpers.js"></script>
+
 <script src="assets/js/index.js"></script>
 
 </body>

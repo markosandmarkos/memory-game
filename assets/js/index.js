@@ -1,3 +1,2 @@
-const TOTAL_LEVELS = 10;
-
-new App(TOTAL_LEVELS);
+const level = 1;
+new App(level);
