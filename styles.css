@@ -1,0 +1,18 @@
+.container {
+  margin: auto;
+  border: 2px solid black;
+  width: 49%;
+  height: 320px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.node {
+  background-image: linear-gradient(red, yellow);
+}
+img {
+  margin: 0.5px;
+  border: 1px solid black;
+}
+/* .image {
+  display: none;
+} */
