@@ -1,0 +1,3 @@
+const TOTAL_LEVELS = 10;
+
+new App(TOTAL_LEVELS);
