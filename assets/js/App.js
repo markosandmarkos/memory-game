@@ -1,6 +1,6 @@
-class App extends Constants {
+class App extends Algorithms {
     constructor(level) {
-        super();
+        super(level);
         
         this._level = level;
         
@@ -20,18 +20,14 @@ class App extends Constants {
         let data = [],
             images = [],
             columns = [];
-        
-        let columnsForOneRow = (this.FIRST_LEVEL_IMG_COUNT * 2) / this.FIRST_LEVEL_ROW_COUNT;
-        
-        for (let i = 1; i <= this.FIRST_LEVEL_IMG_COUNT; i++) {
-            images.push(i);
-        }
+    
+        for (let i = 1; i <= this.getImgCount(); i++) images.push(i);
         
         images = shuffle([...images, ...images]);
         
         images.forEach(value => {
             columns.push(value);
-            if (columns.length === columnsForOneRow) {
+            if (columns.length === this.getColumnsForOneRow()) {
                 data.push(columns);
                 columns = [];
             }
