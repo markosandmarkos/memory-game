@@ -17,34 +17,27 @@ class App extends Constants {
     }
     
     generateData() {
-        let data = [];
-        
-        const columnsForOneRow = (this.FIRST_LEVEL_IMG_COUNT) / (this.FIRST_LEVEL_ROW_COUNT);
-        let rows = 0;
-        let rowData = [];
+        let rows = 0,
+            data = [],
+            imagesArr = [],
+            columnsData = [];
         
         for (let i = 1; i <= this.FIRST_LEVEL_IMG_COUNT; i++) {
-            rowData.push(i);
+            imagesArr.push(i);
+        }
+        
+        imagesArr = shuffle([...imagesArr, ...imagesArr]);
+        
+        imagesArr.forEach(value => {
             rows++;
-            if (rows === columnsForOneRow) {
-                data.push(rowData);
-                rowData = [];
+            columnsData.push(value);
+            if (rows === this.FIRST_LEVEL_ROW_COUNT) {
+                data.push(columnsData);
+                columnsData = [];
                 rows = 0;
             }
-        }
+        });
+        
         return shuffle(data);
-    }
-    
-    generateData2() {
-        this.generateRows();
-        this.generateColumns();
-    }
-    
-    generateRows() {
-    
-    }
-    
-    generateColumns() {
-    
     }
 }
