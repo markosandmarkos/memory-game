@@ -17,27 +17,26 @@ class App extends Constants {
     }
     
     generateData() {
-        let rows = 0,
-            data = [],
-            imagesArr = [],
-            columnsData = [];
+        let data = [],
+            images = [],
+            columns = [];
+        
+        let columnsForOneRow = (this.FIRST_LEVEL_IMG_COUNT * 2) / this.FIRST_LEVEL_ROW_COUNT;
         
         for (let i = 1; i <= this.FIRST_LEVEL_IMG_COUNT; i++) {
-            imagesArr.push(i);
+            images.push(i);
         }
         
-        imagesArr = shuffle([...imagesArr, ...imagesArr]);
+        images = shuffle([...images, ...images]);
         
-        imagesArr.forEach(value => {
-            rows++;
-            columnsData.push(value);
-            if (rows === this.FIRST_LEVEL_ROW_COUNT) {
-                data.push(columnsData);
-                columnsData = [];
-                rows = 0;
+        images.forEach(value => {
+            columns.push(value);
+            if (columns.length === columnsForOneRow) {
+                data.push(columns);
+                columns = [];
             }
         });
         
-        return shuffle(data);
+        return data;
     }
 }
