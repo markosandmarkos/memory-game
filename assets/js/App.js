@@ -1,12 +1,12 @@
 class App extends Algorithms {
     constructor(level) {
         super(level);
-        
         this._level = level;
         
-        this.data = this.generateData();
-        console.log(this.data);
-        this.render();
+        if (this.validLevel()) {
+            this.data = this.generateData();
+            this.render();
+        }
     }
     
     render() {
@@ -20,12 +20,12 @@ class App extends Algorithms {
         let data = [],
             images = [],
             columns = [];
-    
+        
         for (let i = 1; i <= this.getImgCount(); i++) images.push(i);
         
-        images = shuffle([...images, ...images]);
+        let imgShuffled = shuffle([...images, ...images]);
         
-        images.forEach(value => {
+        imgShuffled.forEach(value => {
             columns.push(value);
             if (columns.length === this.getColumnsForOneRow()) {
                 data.push(columns);
@@ -34,5 +34,10 @@ class App extends Algorithms {
         });
         
         return data;
+    }
+    
+    validLevel() {
+        let {_level} = this;
+        return _level && !isNaN(_level) && _level > 0 && _level <= this.MAX_LEVEL;
     }
 }

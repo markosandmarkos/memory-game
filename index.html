@@ -17,33 +17,40 @@
     <title></title>
 </head>
 
-<body>
+<body class="bg-info">
 
-<div id="root">
+<div class="d-flex justify-content-center align-items-center h-100">
     <div class="container">
-        <div class="card text-center">
+        <div class="card text-center text-primary bg-warning">
+            
             <div class="card-header">
-                Memory Game
+                <b>Memory Game</b>
             </div>
             
-            <div class="card-body">
+            <div class="card-body" id="root">
                 {{#each rows as |columns|}}
-                    <div class="row">
-                        {{#each columns as |game index|}}
-                            <div class="col-sm p-2">
-                                <div class="card game-item pointer">
-                                    <img class="game-img" src="assets/img/game/{{game}}.png" alt="1">
-                                </div>
-                            </div>
-                        {{/each}}
+                <div class="row">
+                    {{#each columns as |i|}}
+                    <div class="col-sm p-2">
+                        <div
+                            class="card bg-secondary game-item d-flex justify-content-center align-items-center pointer">
+                            <img alt="image {{i}}" class="game-img" src="assets/img/game/{{i}}.png">
+                        </div>
                     </div>
+                    {{/each}}
+                </div>
                 {{/each}}
             </div>
             
-            <div class="card-footer text-muted">
-                Developed for <b class="text-warning">Hasmik</b>, Grish, Stepan and Narek
+            <div class="card-footer text-secondary">
+                <b>
+                    <span class="text-primary"><</span>
+                    <span class="text-success">Developed</span>
+                    <i class="text-primary"> /></i>
+                    for <span class="text-danger">Hasmik</span>, Grish, Stepan and Narek
+                </b>
             </div>
-            
+        
         </div>
     </div>
 </div>
@@ -66,10 +73,10 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-
 <!-- Custom scripts -->
 <script src="assets/js/Algorithms.js"></script>
 <script src="assets/js/App.js"></script>
+
 <script src="assets/js/helpers.js"></script>
 
 <script src="assets/js/index.js"></script>
