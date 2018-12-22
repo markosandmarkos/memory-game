@@ -8,11 +8,15 @@
 }
 .node {
   background-image: linear-gradient(red, yellow);
+  height: 150px;
+  width: 150px;
+  border: 1px solid white;
+  margin-bottom: 0px;
 }
 img {
   margin: 0.5px;
-  border: 1px solid black;
+  border: 1px solid white;
 }
-/* .image {
+.hidden {
   display: none;
-} */
+}
