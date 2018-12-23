@@ -1,2 +1,2 @@
 const level = 1;
-new App(level);
+let app = new App(level);

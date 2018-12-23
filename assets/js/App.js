@@ -6,6 +6,8 @@ class App extends Algorithms {
         if (this.validLevel()) {
             this.data = this.generateData();
             this.render();
+            
+            this.game = new Game();
         }
     }
     
@@ -23,7 +25,7 @@ class App extends Algorithms {
         
         for (let i = 1; i <= this.getImgCount(); i++) images.push(i);
         
-        let imgShuffled = shuffle([...images, ...images]);
+        let imgShuffled = Helpers.shuffle([...images, ...images]);
         
         imgShuffled.forEach(value => {
             columns.push(value);

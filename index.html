@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <!-- Required meta tags -->
@@ -12,12 +12,19 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
     
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+          crossorigin="anonymous">
+    
+    
     <link rel="stylesheet" href="assets/css/style.css">
     
     <title></title>
 </head>
 
-<body class="bg-info">
+<body class="bg-info h-100">
 
 <div class="d-flex justify-content-center align-items-center h-100">
     <div class="container">
@@ -32,9 +39,11 @@
                 <div class="row">
                     {{#each columns as |i|}}
                     <div class="col-sm p-2">
-                        <div
-                            class="card bg-secondary game-item d-flex justify-content-center align-items-center pointer">
-                            <img alt="image {{i}}" class="game-img" src="assets/img/game/{{i}}.png">
+                        <div onclick="app.game.openImg(event, '{{i}}')"
+                            class="game-item card bg-dark d-flex justify-content-center align-items-center pointer">
+                            <i class="fa fa-lg fa-question text-white"></i>
+                            <img alt="image {{i}}" data-id="{{i}}" class="game-img d-none"
+                                 src="assets/img/game/{{i}}.png">
                         </div>
                     </div>
                     {{/each}}
@@ -76,8 +85,9 @@
 <!-- Custom scripts -->
 <script src="assets/js/Algorithms.js"></script>
 <script src="assets/js/App.js"></script>
+<script src="assets/js/Game.js"></script>
 
-<script src="assets/js/helpers.js"></script>
+<script src="assets/js/Helpers.js"></script>
 
 <script src="assets/js/index.js"></script>
 
