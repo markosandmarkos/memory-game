@@ -4,6 +4,7 @@ class App extends Algorithms {
         this._level = level;
         
         if (this.validLevel()) {
+            this.rootElement = document.getElementById('root');
             this.data = this.generateData();
             this.render();
             
@@ -13,9 +14,10 @@ class App extends Algorithms {
     
     render() {
         let {data} = this;
-        let root = document.getElementById('root');
-        let html = root.innerHTML;
-        root.innerHTML = Handlebars.compile(html)({rows: data});
+        
+        let html = this.rootElement.innerHTML;
+        this.rootElement.innerHTML = Handlebars.compile(html)({rows: data});
+        this.hideLoading();
     }
     
     generateData() {
@@ -41,5 +43,12 @@ class App extends Algorithms {
     validLevel() {
         let {_level} = this;
         return _level && !isNaN(_level) && _level > 0 && _level <= this.MAX_LEVEL;
+    }
+    
+    hideLoading() {
+        let loading = document.getElementById('loading');
+        loading.innerHTML = '';
+        this.rootElement.classList.remove('d-none');
+        
     }
 }

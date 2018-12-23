@@ -19,6 +19,7 @@
           crossorigin="anonymous">
     
     
+    <link rel="stylesheet" href="assets/css/loading.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
     <title></title>
@@ -28,27 +29,50 @@
 
 <div class="d-flex justify-content-center align-items-center h-100">
     <div class="container">
-        <div class="card text-center text-primary bg-warning">
+        <div class="base-card card text-center text-primary bg-warning">
             
             <div class="card-header">
                 <b>Memory Game</b>
             </div>
             
-            <div class="card-body" id="root">
-                {{#each rows as |columns|}}
-                <div class="row">
-                    {{#each columns as |i|}}
-                    <div class="col-sm p-2">
-                        <div onclick="app.game.openImg(event, '{{i}}')"
-                             class="game-item card bg-dark d-flex justify-content-center align-items-center pointer">
-                            <i class="fa fa-lg fa-question text-white"></i>
-                            <img alt="image {{i}}" data-id="{{i}}" class="game-img d-none"
-                                 src="assets/img/game/{{i}}.png">
+            <div class="card-body">
+                
+                <div id="loading">
+                    <div class="infinity-wrapper">
+                        <div class="infinity-container">
+                            <div class="trace"></div>
+                            <div class="pencil">
+                                <div class="rubber"></div>
+                                <div class="metal"></div>
+                                <div class="crayon">
+                                    <div class="crayon-left"></div>
+                                    <div class="crayon-center"></div>
+                                    <div class="crayon-right"></div>
+                                </div>
+                                <div class="pencil-top"></div>
+                                <div class="pencil-tip"></div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                
+                <div id="root" class="d-none">
+                    {{#each rows as |columns|}}
+                    <div class="row">
+                        {{#each columns as |i|}}
+                        <div class="col-sm p-2">
+                            <div onclick="app.game.openImg(event, '{{i}}')"
+                                 class="game-item card bg-dark d-flex justify-content-center align-items-center pointer">
+                                <i class="fa fa-lg fa-question text-white"></i>
+                                <img alt="image {{i}}" data-id="{{i}}" class="game-img d-none"
+                                     src="assets/img/game/{{i}}.png">
+                            </div>
+                        </div>
+                        {{/each}}
                     </div>
                     {{/each}}
                 </div>
-                {{/each}}
+                
             </div>
             
             <div class="card-footer text-secondary">
