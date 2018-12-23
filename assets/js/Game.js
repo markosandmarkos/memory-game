@@ -17,7 +17,7 @@ class Game {
         let {currentTarget} = e;
         
         if (this.clickIsDisabled || currentTarget.classList.contains('opened')) return;
-    
+        
         currentTarget.classList.add('opened');
         let img = currentTarget.querySelector(`[data-id="${currentImgIndex}"]`);
         
