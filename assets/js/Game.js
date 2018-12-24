@@ -4,7 +4,7 @@ class Game {
         this.prevImgIndex = false;
         this.clickIsDisabled = false;
         
-        this.score = this.scoreCounter();
+        this.score = Helpers.scoreCounter();
     }
     
     disableClick() {
@@ -56,12 +56,4 @@ class Game {
         let scoreElement = document.getElementById('score');
         scoreElement.innerHTML = Handlebars.compile(html)({score: this.score()});
     };
-    
-    scoreCounter() {
-        let currentScore = 0;
-        
-        return function (score = 1) {
-            return currentScore += score;
-        };
-    }
 }

@@ -32,4 +32,12 @@ class Helpers {
         icon.classList.remove('d-none');
         parent.classList.remove('bg-secondary');
     }
+    
+    static scoreCounter() {
+        let currentScore = 0;
+    
+        return function (score = 1) {
+            return currentScore += score;
+        };
+    }
 }
