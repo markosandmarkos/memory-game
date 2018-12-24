@@ -5,7 +5,6 @@ class Game {
         this.clickIsDisabled = false;
         
         this.score = this.scoreCounter();
-        this.renderNewScore();
     }
     
     disableClick() {
@@ -61,7 +60,7 @@ class Game {
     };
     
     scoreCounter() {
-        let currentScore = -1;
+        let currentScore = 0;
         
         return function (score = 1) {
             return currentScore += score;
