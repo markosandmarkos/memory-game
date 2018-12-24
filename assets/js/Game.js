@@ -52,10 +52,8 @@ class Game {
     }
     
     renderNewScore () {
-        let scoreTmplElement = document.getElementById('scoreTmpl');
+        let html = document.getElementById('scoreTmpl').innerHTML;
         let scoreElement = document.getElementById('score');
-    
-        let html = scoreTmplElement.innerHTML;
         scoreElement.innerHTML = Handlebars.compile(html)({score: this.score()});
     };
     
