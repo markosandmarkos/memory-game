@@ -52,8 +52,7 @@ class Game {
     }
     
     renderNewScore () {
-        let html = document.getElementById('scoreTmpl').innerHTML;
         let scoreElement = document.getElementById('score');
-        scoreElement.innerHTML = Handlebars.compile(html)({score: this.score()});
+        scoreElement.innerHTML = Handlebars.compile('{{score}}')({score: this.score()});
     };
 }
