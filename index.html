@@ -29,10 +29,14 @@
 
 <div class="d-flex justify-content-center align-items-center h-100">
     <div class="container">
-        <div class="base-card card text-center text-primary bg-warning">
+        <div class="base-card card text-primary bg-warning">
             
             <div class="card-header">
                 <b>Memory Game</b>
+                <div class="float-right">
+                    <b>Score:</b> <b id="score" class="text-danger"></b>
+                    <script type="text/x-handlebars-template" id="scoreTmpl">{{score}}</script>
+                </div>
             </div>
             
             <div class="card-body">

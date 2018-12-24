@@ -3,6 +3,9 @@ class Game {
         this.rootElement = document.getElementById('root');
         this.prevImgIndex = false;
         this.clickIsDisabled = false;
+        
+        this.score = this.scoreCounter();
+        this.renderNewScore();
     }
     
     disableClick() {
@@ -44,7 +47,24 @@ class Game {
             }, 1000);
             
         } else {
+            this.renderNewScore();
             this.prevImgIndex = false;
         }
+    }
+    
+    renderNewScore () {
+        let scoreTmplElement = document.getElementById('scoreTmpl');
+        let scoreElement = document.getElementById('score');
+    
+        let html = scoreTmplElement.innerHTML;
+        scoreElement.innerHTML = Handlebars.compile(html)({score: this.score()});
+    };
+    
+    scoreCounter() {
+        let currentScore = -1;
+        
+        return function (score = 1) {
+            return currentScore += score;
+        };
     }
 }
