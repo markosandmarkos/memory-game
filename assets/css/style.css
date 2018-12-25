@@ -1,0 +1,11 @@
+.game-item {
+    height: 100px;
+}
+
+.game-img {
+    width: 20%;
+}
+
+.pointer {
+    cursor: pointer;
+}

@@ -1,0 +1,86 @@
+.infinity-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infinity-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: draw 5s linear infinite;
+    transform-origin: center;
+    position: relative;
+}
+
+.trace {
+    width: 95%;
+    height: 95%;
+    transform: rotate(-45deg);
+    border: 2vh solid #e6e6e6;
+    border-radius: 50%;
+    border-right: 2vh solid transparent;
+    border-bottom: 2vh solid transparent;
+}
+
+.pencil {
+    width: 17%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 41%;
+}
+
+.rubber {
+    background-color: #ff6666;
+    height: 10%;
+    border-radius: 20% 20% 0 0;
+    margin-top: -5px;
+}
+
+.metal {
+    background: linear-gradient(#737373, #b3b3b3);;
+    height: 12%;
+}
+
+.crayon {
+    display: flex;
+    height: 55%;
+}
+
+.crayon-left {
+    width: 33%;
+    background: #994d00;
+}
+
+.crayon-center {
+    width: 33%;
+    background: #b35900;
+}
+
+.crayon-right {
+    width: 33%;
+    background: #cc6600;
+}
+
+/*polygon kutuya şekil vermeye yarar. sol üst köşe 0% 0% noktası olarak baz alınır*/
+.pencil-top {
+    height: 15%;
+    clip-path: polygon(0 0, 30% 100%, 70% 100%, 100% 0);
+    background-color: #595959;
+}
+
+.pencil-tip {
+    background-color: #e6e6e6;
+    height: 8%;
+    clip-path: polygon(30% 0, 50% 100%, 70% 0);
+}
+
+@keyframes draw {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
