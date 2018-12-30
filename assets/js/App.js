@@ -3,21 +3,21 @@ class App extends Algorithms {
         super(level);
         this._level = level;
         
-        if (this.validLevel()) {
-            this.rootElement = document.getElementById('root');
-            this.data = this.generateData();
-            this.render();
-            
-            this.game = new Game();
-        }
+        if (!this.validLevel()) return;
+        
+        this.rootElement = document.getElementById('root');
+        this.rootTmpl = this.rootElement.innerHTML;
+        
+        this.data = this.generateData();
+        this.render();
+        this.hideLoading();
+        
+        this.game = new Game();
     }
     
     render() {
-        let {data} = this;
-        
-        let html = this.rootElement.innerHTML;
-        this.rootElement.innerHTML = Handlebars.compile(html)({rows: data});
-        this.hideLoading();
+        let {data, rootTmpl} = this;
+        this.rootElement.innerHTML = Handlebars.compile(rootTmpl)({rows: data});
     }
     
     generateData() {
@@ -46,9 +46,10 @@ class App extends Algorithms {
     }
     
     hideLoading() {
-        let loading = document.getElementById('loading');
-        loading.innerHTML = '';
-        this.rootElement.classList.remove('d-none');
-        
+        setTimeout(() => {
+
+            this.rootElement.classList.remove('d-none');
+            this.rootElement.classList.add('fade-in');
+        }, 5000);
     }
 }

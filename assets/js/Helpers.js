@@ -33,11 +33,11 @@ class Helpers {
         parent.classList.remove('bg-secondary');
     }
     
-    static scoreCounter() {
-        let currentScore = 0;
+    static makeCounter() {
+        let count = 0;
     
-        return function (score = 1) {
-            return currentScore += score;
+        return function (addedCount = 1) {
+            return count += addedCount;
         };
     }
 }

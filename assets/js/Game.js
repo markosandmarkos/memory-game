@@ -3,8 +3,8 @@ class Game {
         this.rootElement = document.getElementById('root');
         this.prevImgIndex = false;
         this.clickIsDisabled = false;
-        
-        this.score = Helpers.scoreCounter();
+        this.score = Helpers.makeCounter();
+        this.successOpenedImages = 0;
     }
     
     disableClick() {
@@ -48,6 +48,7 @@ class Game {
         } else {
             this.renderNewScore();
             this.prevImgIndex = false;
+            this.checkWin();
         }
     }
     
@@ -55,4 +56,8 @@ class Game {
         let scoreElement = document.getElementById('score');
         scoreElement.innerHTML = Handlebars.compile('{{score}}')({score: this.score()});
     };
+    
+    checkWin () {
+    
+    }
 }
