@@ -22,13 +22,81 @@
 			position: relative;
 			transition: transform .2s;
 		}
+		.hidden {
+			background-color: red;
+		}
 		input[type="button"]:focus {
 			 outline: -webkit-focus-ring-color auto 0;
 		}
+		.unset {
+			background-color: unset;
+		}
+		#game_over {
+			position: absolute;
+		}
+        @-webkit-keyframes leaves {
+            0% {
+                width: 0;
+                height: 0;
+                z-index: 0;
+                transform:rotate(360deg);
+                background-color: rgba(37, 132, 10, 0);
+            }
+            10%,20%,30% {
+                width: 25%;
+                height: 25%;
+                z-index: 10;
+                transform:rotate(-170deg);
+                background-color: rgba(37, 132, 10, .5);
+            }
+            40%,50%,60%,70%,80% {
+                width: 35%;
+                height: 35%;
+                background-color: rgba(37, 132, 10, .8);
+            }
+            90%,100% {
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                transform:rotate(-360deg);
+                background-color: rgba(37, 132, 10, 1);
+            }
+        }
+        .scile {
+            animation: leaves 8s ease alternate;
+            -webkit-animation: leaves 8s ease alternate;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 2;
+        }
+        @-webkit-keyframes gameovertext {
+            0% {
+                font-size: 0;
+            }
+            10%,20%,30% {
+                font-size: 20px;
+            }
+            40%,50%,60%,70%,80% {
+                font-size: 35px;
+            }
+            90%,100% {
+                font-size: 65px;
+            }
+        }
+        .scile #game_over_text, .scile .game_over_icon {
+            animation: gameovertext 8s ease-out alternate;
+            -webkit-animation: gameovertext 8s ease-out alternate;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 2;
+        }
 	</style>
 </head>
-<body>
-
+<body class="d-flex align-items-center justify-content-center">
+	<div id="game_over" class="d-flex text-center align-items-center justify-content-center">
+		<div class="scile-text">
+			<h1 id="game_over_text" class="text-white">GAME OVER</h1>
+			<h2 class="text-white game_over_icon">&#9760;</h2>
+		</div>
+	</div>
 	<div class="container h-100">
 		<div class="row align-items-center h-100">
 			<div class="col-md-6 offset-md-3" id="parentBlock">
@@ -43,10 +111,10 @@
 				<div class="row border" id="demo_containers"></div>
 				<div class="row">
 					<div class="col-md-4 mt-2">
-						<button class="btn btn-success w-100" onclick="playGame()">Play</button>
+						<button class="btn btn-success w-100" id="play" onclick="playGame(this)">Play</button>
 					</div>
 					<div class="col-md-4 text-center mt-2">
-						<button class="btn btn-success w-100" onclick="pauseGame(this)">Pause</button>
+						<button class="btn btn-success w-100" id="pause" onclick="pauseGame(this)">Pause</button>
 					</div>
 					<div class="col-md-4 text-right mt-2">
 						<button class="btn btn-success w-100" id="btnFullScreenToggle" value="goFull" onclick="toggleFullScreenMode()">Full screen</button>
