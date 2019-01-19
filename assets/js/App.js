@@ -12,7 +12,7 @@ class App extends Algorithms {
         this.render();
         this.hideLoading();
         
-        this.game = new Game();
+        this._game = new Game();
     }
     
     render() {
