@@ -1,6 +1,6 @@
 let demoContainer = document.getElementById('demo_containers');
 let buttons = document.getElementsByClassName("disable-change");
-// let step = 1;
+let stepCount = 1;
 
 let imgArray = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.png'];
 let imgArrayConcat = imgArray.concat(imgArray);
@@ -8,7 +8,6 @@ let imgArrayConcat = imgArray.concat(imgArray);
 imgArrayConcat = imgArrayConcat.sort(function(){ return 0.5-Math.random() });
 
 for (let i = 0; i < imgArrayConcat.length; i++) {
-	console.log(i);
 	let dataVal = imgArrayConcat[i].split('.');
 	let html = `<div class="col-2 px-0 node">
 		<img class="border bg-white p-2" width="100%" src="public/images/${imgArrayConcat[i]}" alt="image-${i}">
@@ -19,10 +18,7 @@ for (let i = 0; i < imgArrayConcat.length; i++) {
 
 let imageIndexStore = "";
 let imageIndexNum = "";
-// let timer = 0;
 demoContainer.addEventListener("click",function (e) {
-
-	if (!e.target) return;
 	/** @namespace e.target.dataset */
 	let {value} = e.target.dataset;
 	let {num} = e.target.dataset;
@@ -37,24 +33,27 @@ demoContainer.addEventListener("click",function (e) {
 		imageIndexStore = value;
 		imageIndexNum = num;
 	}else if(imageIndexStore !== value) {
+		buttonsActiveDeactive(true);
         let a = imageIndexStore;
         let indexNnum = imageIndexNum;
+
 		setTimeout(function () {
 			b.style.backgroundColor = '';
 			demoContainer.querySelector(`[data-value="${a}"][data-num="${indexNnum}"]`).style.backgroundColor = '';
-        }, 900);
 
-		setTimeout(function () {
 			imageIndexStore = "";
 			imageIndexNum = "";
+			buttonsActiveDeactive(false);
+
 		},1000);
 
-	}else if(imageIndexStore !== "" && imageIndexStore === value) {
+	} else if(imageIndexStore !== "" && imageIndexStore === value) {
 		imageIndexStore = "";
 		imageIndexNum = "";
-	}
+        buttonsActiveDeactive(false);
+    }
 
-
+	// victory();
 });
 
 
@@ -89,12 +88,10 @@ function timeWork() {
 
 		// Display the result in the element with id="demo"
 		document.getElementById("countDown").innerHTML = minutes + ":" + seconds;
-		buttonsActiveDeactive(false);
 
 		// If the count down is finished, write some text
 		if (distance < 0) {
 			clearInterval(x);
-
             document.getElementById('game_over').classList.add('scile');
 
             setTimeout(function () {
@@ -103,17 +100,34 @@ function timeWork() {
 
 			document.getElementById("countDown").innerHTML = "00:00";
             fullStartPosition();
+            stepCount = 1;
+            document.getElementById('step').innerHTML = '0';
 		}
 	}, 1000);
-
 }
+/*function victory() {
+    for(let i = 0; i < buttons.length; i++) {
+        if (buttons[i].style.backgroundColor === 'unset') {
+			console.log(buttons[i]);
+		}
 
+
+        // if (last_element.style.backgroundColor === 'unset') {
+        //     console.log(buttons[i]);
+        // }
+    }
+
+}*/
+function step(){
+    document.getElementById('step').innerHTML = stepCount++;
+}
 
 function fullStartPosition() {
 	setTimeout(function () {
 		for(let i = 0; i < buttons.length; i++) {
 			buttons[i].style.backgroundColor = '';
 		}
+
 		buttonsActiveDeactive(true);
 		document.getElementById('play').disabled = false;
 		document.getElementById('pause').disabled = false;
@@ -141,6 +155,7 @@ buttonsActiveDeactive(true);
 
 // Play Game
 function playGame(e) {
+    step();
     e.disabled = true;
     document.getElementById('pause').disabled = false;
 	buttonsActiveDeactive(false);
